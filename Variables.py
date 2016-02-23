@@ -4,4 +4,7 @@ UserName = ""
 QuestionAnswerOne = ""
 # The user's answers will be stored here.
 
+Word_General = ""
+
 # We want some variables relating to a 3d graph here. The graph will need to store the plotted points for each question.
+
