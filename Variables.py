@@ -6,7 +6,13 @@ TrueName = []
 QuestionAnswerOne = ""
 # The user's answers will be stored here.
 
+Emotion = 0
+
+FAIanswer = ""
+
 Word = []
+
+Index = 0
 
 OperationList = 0
 ThingsList_General= 0

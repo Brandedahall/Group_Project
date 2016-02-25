@@ -1,3 +1,4 @@
+import string
 OperationList = {'come', 'get', 'give', 'go', 'keep', 'let', 'make', 'put', 'seem', 'take', 'be', 'do', 'have', 'say',
                  'about', 'across', 'after', 'against', 'among', 'at', 'before', 'between', 'by', 'down', 'from', 'in',
                  'off', 'on', 'over', 'through', 'to', 'under', 'up', 'with', 'as', 'for', 'of', 'till', 'than,a ', 'the',
@@ -90,4 +91,5 @@ QualitiesList = {'awake', 'bad', 'bent', 'bitter', 'blue', 'certain', 'cold', 'c
                  'solid', 'special', 'strange', 'thin', 'white', 'wrong'}
 
 Open = open("AFINN-111.txt", "r")
-Words = Open.read()
+Words = Open.read().lower()
+Words = Words.split(" ")

@@ -42,32 +42,40 @@ Variables.QuestionAnswerOne = Variables.QuestionAnswerOne.split(" ")  # This spl
 
 
 # This looks for any words that are in each of the dictionaries in Dictionary.py and increments.
-for Word in Variables.QuestionAnswerOne:
-    if Word in Dictionary.ThingsList_General:
-        Variables.Word.append(Word)
-        Variables.ThingsList_General += 1
-    if Word in Dictionary.ThingsList_Picturable:
-        Variables.Word.append(Word)
-        Variables.ThingsList_Picturable += 1
-    if Word in Dictionary.OperationList:
-        Variables.Word.append(Word)
-        Variables.OperationList += 1
-    if Word in Dictionary.QualityList:
-        Variables.Word.append(Word)
-        Variables.QualityList += 1
-    if Word in Dictionary.QualitiesList:
-        Variables.Word.append(Word)
-        Variables.QualitiesList += 1
-
-print(Variables.Word)
-print("Type of word:       : Amount:")
-print("Things_General      :", Variables.ThingsList_General)
-print("Things_Picturable   :", Variables.ThingsList_Picturable)
-print("Operation           :", Variables.OperationList)
-print("Quality             :", Variables.QualityList)
-print("Qualities           :", Variables.QualitiesList)
+# for Word in Variables.QuestionAnswerOne:
+#     if Word in Dictionary.ThingsList_General:
+#         Variables.Word.append(Word)
+#         Variables.ThingsList_General += 1
+#     if Word in Dictionary.ThingsList_Picturable:
+#         Variables.Word.append(Word)
+#         Variables.ThingsList_Picturable += 1
+#     if Word in Dictionary.OperationList:
+#         Variables.Word.append(Word)
+#         Variables.OperationList += 1
+#     if Word in Dictionary.QualityList:
+#         Variables.Word.append(Word)
+#         Variables.QualityList += 1
+#     if Word in Dictionary.QualitiesList:
+#         Variables.Word.append(Word)
+#         Variables.QualitiesList += 1
+#
+# print(Variables.Word)
+# print("Type of word:       : Amount:")
+# print("Things_General      :", Variables.ThingsList_General)
+# print("Things_Picturable   :", Variables.ThingsList_Picturable)
+# print("Operation           :", Variables.OperationList)
+# print("Quality             :", Variables.QualityList)
+# print("Qualities           :", Variables.QualitiesList)
 
 # Now, with the splitting part out of the way, the process of reading each word is made easier. We want to be able to
 # read the emotional level.
 
-print(Dictionary.Words)
+for x in Variables.QuestionAnswerOne:
+    if x in Dictionary.Words:
+        Variables.Index = Dictionary.Words(x)
+
+Variables.Emotion += int(Dictionary.Words.pop(Variables.Index + 1).strip("\t"))
+
+
+print("Emotional level", Variables.Emotion)
+print(Variables.Index)
