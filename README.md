@@ -1,5 +1,5 @@
 # Group_Project
-This is our group project for out second year "Group Project" module.
+This is our group project for our second year "Group Project" module.
 
 There are seven members of the group:
 Alex Hall
