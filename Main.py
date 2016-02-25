@@ -9,9 +9,6 @@ print("Hello! I'm FAI, but please call me Fortune!")
 Variables.UserName = input("Alright! To start us off, please can you tell me your name?")
 # Stores the username in UserName, in the Variables file.
 
-if len(Variables.UserName) == 0:
-    print("Oh... I see you're quite shy. Don't worry, I can be gentle.")
-
 Variables.Name = Variables.UserName.split(" ")
 if 'I' in Variables.Name:
     Variables.Name.remove('I')
@@ -22,10 +19,13 @@ if len(Variables.Name) > 2:
             Variables.TrueName.append(x)
     Variables.Name.clear()
     Variables.Name = Variables.TrueName.pop()
-if len(Variables.Name) < 2:
+if len(Variables.Name) == 1 and 2:
     Variables.Name = Variables.Name.pop()
+if len(Variables.Name) == 0:
+    print("I see... well, since you didn't enter a name, I'll call you Anonymous!")
+    Variables.Name = "Anonymous"
 
-print(Variables.Name)
+    print()
 
 print("It's nice to meet you, " + Variables.Name + ". To start us off, please would you answer this short question?")
 Variables.QuestionAnswerOne = input("Would you say that you have had a good day today?")
@@ -70,3 +70,4 @@ print("Qualities           :", Variables.QualitiesList)
 # Now, with the splitting part out of the way, the process of reading each word is made easier. We want to be able to
 # read the emotional level.
 
+print(Dictionary.Words)
