@@ -1,0 +1,9 @@
+# http://www.tutorialspoint.com/python/python_strings.htm
+# http://arxiv.org/abs/1103.2903 - Citation needed.
+
+# http://www.nltk.org/
+
+" Variables.QuestionAnswerOne = ''.join(ch for ch in Variables.QuestionAnswerOne if ch not in exclude) "
+# http://stackoverflow.com/a/266162
+
+# http://ogden.basic-english.org/words.html

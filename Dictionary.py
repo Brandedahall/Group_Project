@@ -88,3 +88,6 @@ QualitiesList = {'awake', 'bad', 'bent', 'bitter', 'blue', 'certain', 'cold', 'c
                  'green', 'ill', 'last', 'late', 'left', 'loose', 'loud', 'low', 'mixed', 'narrow', 'old', 'opposite',
                  'public', 'rough', 'sad', 'safe', 'secret', 'short', 'shut', 'simple', 'slow', 'small', 'soft',
                  'solid', 'special', 'strange', 'thin', 'white', 'wrong'}
+
+Open = open("AFINN-111.txt", "r")
+Words = Open.read()
