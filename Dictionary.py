@@ -92,4 +92,5 @@ QualitiesList = {'awake', 'bad', 'bent', 'bitter', 'blue', 'certain', 'cold', 'c
 
 Open = open("AFINN-111.txt", "r")
 Words = Open.read().lower()
-Words = Words.split(" ")
+Words = Words.replace("\t", " ")
+Words = Words.split(' ')

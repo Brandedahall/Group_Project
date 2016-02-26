@@ -72,10 +72,9 @@ Variables.QuestionAnswerOne = Variables.QuestionAnswerOne.split(" ")  # This spl
 
 for x in Variables.QuestionAnswerOne:
     if x in Dictionary.Words:
-        Variables.Index = Dictionary.Words(x)
+        Variables.Index = Dictionary.Words.index(x)
+        Variables.Emotion += int(Dictionary.Words.pop(Variables.Index + 1))
+    if x not in Dictionary.Words:
+        Variables.Emotion += 0
 
-Variables.Emotion += int(Dictionary.Words.pop(Variables.Index + 1).strip("\t"))
-
-
-print("Emotional level", Variables.Emotion)
-print(Variables.Index)
+print("Emotional level:", Variables.Emotion)
