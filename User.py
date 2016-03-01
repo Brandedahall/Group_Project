@@ -1,6 +1,7 @@
 import string
 import Variables
 import Dictionary
+import AI
 
 
 def username(username):
@@ -22,7 +23,7 @@ def username(username):
     return username
 
 
-def analyse(response):
+def analyse(response, topic):
     exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
 
     Variables.QuestionAnswerOne = response
@@ -35,5 +36,8 @@ def analyse(response):
             Variables.Emotion += int(Dictionary.Words.pop(Variables.Index + 1))
         if x not in Dictionary.Words:
             Variables.Emotion += 0
-    return Variables.Emotion
+    Variables.baseline = Variables.baseline + Variables.Emotion
 
+    Variables.Tempnexttopic = AI.nexttopic(Variables.Emotion, topic, Variables.baseline)
+
+    return Variables.Emotion, Variables.Tempnexttopic
