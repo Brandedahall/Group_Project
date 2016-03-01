@@ -20,7 +20,7 @@ def username(username):
     if len(Variables.Name) == 0:
         print("I see... well, since you didn't enter a name, I'll call you Anonymous!")
         Variables.Name = "Anonymous"
-    return username
+    return Variables.Name
 
 
 def analyse(response, topic):

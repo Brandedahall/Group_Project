@@ -9,5 +9,4 @@ def nexttopic(level, topic, baseline):
         return Variables.Topic  + 1
 
 
-def chatAI():
-    
+#def chatAI():
