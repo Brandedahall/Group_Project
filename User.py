@@ -26,18 +26,17 @@ def username(username):
 def analyse(response, topic):
     exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
 
-    Variables.QuestionAnswerOne = response
-    Variables.QuestionAnswerOne = ''.join(ch for ch in Variables.QuestionAnswerOne if ch not in exclude)
-    Variables.QuestionAnswerOne = Variables.QuestionAnswerOne.lower()  # This turns all uppercase characters into lower.
-    Variables.QuestionAnswerOne = Variables.QuestionAnswerOne.split(" ")  # This splits the string into a list of words.
-    for x in Variables.QuestionAnswerOne:
+    Variables.QuestionAnswer = response
+    Variables.QuestionAnswer = ''.join(ch for ch in Variables.QuestionAnswer if ch not in exclude)
+    Variables.QuestionAnswer = Variables.QuestionAnswer.lower()  # This turns all uppercase characters into lower.
+    Variables.QuestionAnswer = Variables.QuestionAnswer.split(" ")  # This splits the string into a list of words.
+    for x in Variables.QuestionAnswer:
         if x in Dictionary.Words:
             Variables.Index = Dictionary.Words.index(x)
             Variables.Emotion += int(Dictionary.Words.pop(Variables.Index + 1))
         if x not in Dictionary.Words:
             Variables.Emotion += 0
-    Variables.baseline = Variables.baseline + Variables.Emotion
 
-    Variables.Tempnexttopic = AI.nexttopic(Variables.Emotion, topic, Variables.baseline)
+    Variables.Topic = AI.nexttopic(Variables.Emotion, topic, Variables.baseline)
 
-    return Variables.Emotion, Variables.Tempnexttopic
+    return Variables.Emotion, Variables.Topic

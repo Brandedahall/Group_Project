@@ -3,7 +3,8 @@ Name = ""
 TrueName = []
 # The user's name is stored here.
 
-QuestionAnswerOne = ""
+QuestionAnswer = ""
+Answer = ""
 # The user's answers will be stored here.
 
 Emotion = 0
@@ -12,8 +13,16 @@ FAIanswer = ""
 numberOfChats = 3
 
 Word = []
-
 Index = 0
+
+keywords_Job = []
+keywords_Family = []
+keywords_Love = []
+keywords_Friends = []
+keywords_Hobbies = []
+keywords_Issues = []
+keywords_Achievements = []
+
 
 baseline = 0
 Tempnexttopic = ""
