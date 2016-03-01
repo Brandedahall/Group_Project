@@ -1,6 +1,5 @@
 import string
 import Variables
-import Dictionary
 import AI
 
 
@@ -31,10 +30,10 @@ def analyse(response, topic):
     Variables.QuestionAnswer = Variables.QuestionAnswer.lower()  # This turns all uppercase characters into lower.
     Variables.QuestionAnswer = Variables.QuestionAnswer.split(" ")  # This splits the string into a list of words.
     for x in Variables.QuestionAnswer:
-        if x in Dictionary.Words:
-            Variables.Index = Dictionary.Words.index(x)
-            Variables.Emotion += int(Dictionary.Words.pop(Variables.Index + 1))
-        if x not in Dictionary.Words:
+        if x in Variables.Words:
+            Variables.Index = Variables.Words.index(x)
+            Variables.Emotion += int(Variables.Words.pop(Variables.Index + 1))
+        if x not in Variables.Words:
             Variables.Emotion += 0
 
     Variables.Topic = AI.nexttopic(Variables.Emotion, topic, Variables.baseline)

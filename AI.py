@@ -1,8 +1,5 @@
-import string
-import Dictionary
 import Variables
 import User
-
 
 def nexttopic(level, topic, baseline):
     if level > baseline:
@@ -16,14 +13,14 @@ def chatAI(topic, level, keywords, numberOfChats):
     topic = Variables.Topics[Variables.Topic]
     numberOfChats -= 1
     if numberOfChats > 0:
-        Variables.Answer = input(FaiAnswer(keywords, level, topic))
+        #  Variables.Answer = input(FaiAnswer(keywords, level, topic))
         User.analyse(Variables.Answer, Variables.Topics[Variables.Topic])
-        for x in Variables.keywords:
+
+        #  Will have to enter keyword statements here!!
 
     else:
-        Variables.Topic + 1
+        Variables.Topic += 1
     return
 
-def FaiAnswer(keywords, level, topic):
 
-    return
+#def FaiAnswer(keywords, level, topic):
