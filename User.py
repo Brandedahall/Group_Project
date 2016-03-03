@@ -36,6 +36,8 @@ def analyse(response, topic):
         if x not in Variables.Words:
             Variables.Emotion += 0
 
+    Variables.baseline += Variables.Emotion
+
     Variables.Topic = AI.nexttopic(Variables.Emotion, topic, Variables.baseline)
 
     return Variables.Emotion, Variables.Topic

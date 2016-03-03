@@ -1,3 +1,20 @@
+Open_lines = open("Responses.txt", "r")
+lines = Open_lines.read()
+lines = lines.replace("\n", ".")
+lines = lines.split(".")
+
+Open = open("AFINN-111.txt", "r")
+Words = Open.read()
+Words = Words.replace(" ", " ")
+Words = Words.split(" ")
+
+SaveResponses = open("SavedResponses.txt", "rw")
+Save = SaveResponses.read()
+Save = Save.replace("\n", ".")
+Save = Save.split(".")
+
+Answer = ""
+
 UserName = ""
 Name = ""
 TrueName = []
@@ -37,9 +54,3 @@ baseline = 0
 Tempnexttopic = ""
 Topic = 0
 Topics = ["Baseline", "Job", "Family", "Love", "Friends", "Hobbies", "Issues", "Achievements"]
-# We want some variables relating to a 3d graph here. The graph will need to store the plotted points for each question.
-
-Open = open("AFINN-111.txt", "r")
-Words = Open.read()
-Words = Words.replace(" ", " ")
-Words = Words.split(" ")
