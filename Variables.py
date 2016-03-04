@@ -8,12 +8,13 @@ Words = Open.read()
 Words = Words.replace(" ", " ")
 Words = Words.split(" ")
 
-SaveResponses = open("SavedResponses.txt", "rw")
+SaveResponses = open("SavedResponses.txt", "r+")
 Save = SaveResponses.read()
 Save = Save.replace("\n", ".")
 Save = Save.split(".")
 
 Answer = ""
+FAIreply = ""
 
 UserName = ""
 Name = ""

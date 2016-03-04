@@ -5,53 +5,48 @@ import math
 
 
 def nexttopic(level, topic, baseline):
-    if level >= baseline:
+    if level != baseline and level < baseline:
         chatAI(topic, level, Variables.numberOfChats)
     else:
         return Variables.Topic + 1
 
 
 def chatAI(topic, level, numberOfChats):
-    numberOfChats = Variables.numberOfChats
-    topic = Variables.Topics[Variables.Topic]
     numberOfChats -= 1
     if numberOfChats > 0:
         Variables.Answer = input(FaiAnswer(level))
         User.analyse(Variables.Answer, Variables.Topics[Variables.Topic])
-
-        #  Will have to enter keyword statements here!!
-
+        load(Variables.Answer, Variables.FAIanswer)
     else:
         Variables.Topic += 1
     return
 
 
 def FaiAnswer(level):
-    level = Variables.Emotion
-    answer = ""
+    Variables.FAIreply = ""
 
     if level < 0 and level > -2:
-        answer = Variables.lines[random.randrange(1, 3)]
+        Variables.FAIanswer = Variables.lines[random.randrange(0, 2)]
     if level < -2 and level > -5:
-        answer = Variables.lines[random.randrange(4, 6)]
+        Variables.FAIanswer = Variables.lines[random.randrange(3, 5)]
     if level == 0:
-        answer = Variables.lines[random.randrange(7, 9)]
+        Variables.FAIanswer = Variables.lines[random.randrange(6, 8)]
     if level > 0 and level < 2:
-        answer = Variables.lines[random.randrange(10, 12)]
+        Variables.FAIanswer = Variables.lines[random.randrange(9, 11)]
     if level > 2 and level < 5:
-        answer = Variables.lines[random.randrange(13, 15)]
+        Variables.FAIanswer = Variables.lines[random.randrange(12, 14)]
 
-    return answer
+    return Variables.FAIanswer
 
 
-def load():
+def load(Answer, FaiAnswer):
     Bestmatch = 0
     answerSSD = 0
     SSD = 0
     ID = 0
 
-    for char in Variables.Answer:
-        answerSSD *= ord(char)
+    for char in Answer:
+        answerSSD += ord(char)
 
     for line in Variables.SaveResponses:
         if line.isupper():
@@ -63,7 +58,7 @@ def load():
         else:
             ID += 1
             for char in line:
-                SSD *= ord(char)
+                SSD += ord(char)
 
             if SSD > SSD:
                 Bestmatch = SSD
@@ -73,9 +68,16 @@ def load():
                 continue
             if SSD > answerSSD:
                 continue
+    save(Answer, FaiAnswer)
+    print("SSD:", SSD)
+    print("AnswerSSD:", answerSSD)
+    print("ID:", ID)
     return Variables.FAIanswer
 
 
-def save(level, answer, useranswer):
-    Variables.Save.append(useranswer, "\n", answer, "\n", level, "\n")
+def save(useranswer, answer):
+    Variables.SaveResponses.write(useranswer)
+    Variables.SaveResponses.write("\n")
+    Variables.SaveResponses.write(answer)
+    Variables.SaveResponses.write("\n")
     return
