@@ -1,37 +1,66 @@
-Open_lines = open("Responses.txt", "r")
-lines = Open_lines.read()
+# Loads responses from text file
+openLines = open("Responses.txt", "r")
+lines = openLines.read()
 lines = lines.replace("\n", ".")
 lines = lines.split(".")
 
-Open = open("AFINN-111.txt", "r")
-Words = Open.read()
-Words = Words.replace(" ", " ")
-Words = Words.split(" ")
+# Loads words used to find emotional level
+wordList = open("AFINN-111.txt", "r")
+words = wordList.read()
+words = words.replace(" ", ".")
+words = words.replace("\t", ".")
+words = words.split(".")
 
-SaveResponses = open("SavedResponses.txt", "r+")
+# Loads saved reponses Fai  can use
+SaveResponses = open("SavedResponses.txt", "r")
 Save = SaveResponses.read()
 Save = Save.replace("\n", ".")
 Save = Save.split(".")
 
-Answer = ""
-FAIreply = ""
+#Reads the list of names and splits them between spaces
+namesList = open("Names.txt", "r")
+names = namesList.read()
+names = names.replace("            ", " ")
+names = names.replace("           ", " ")
+names = names.replace("          ", " ")
+names = names.replace("         ", " ")
+names = names.replace("        ", " ")
+names = names.replace("       ", " ")
+names = names.replace("      ", " ")
+names = names.replace("     ", " ")
+names = names.replace("    ", " ")
+names = names.replace("   ", " ")
+names = names.replace("  ", " ")
+names = names.replace(" ", " ")
+names = names.replace("\n", " ")
+names = names.lower()
+names = names.split(" ")
 
-UserName = ""
+# Username of user
+userName = ""
+# string used to store users response
 Name = ""
+# Users real name
 TrueName = []
 # The user's name is stored here.
 
-QuestionAnswer = ""
+questionAnswer = ""
 Answer = ""
 # The user's answers will be stored here.
 
-Emotion = 0
+
+# Emotion is the emotional level of the instance
+emotion = 0
+# baseline is the users base emotional level
+baseline = 0
+# currentEmotion is used to track the emotional level through out the conversation
+currentEmotion = 0
 
 FAIanswer = ""
 numberOfChats = 3
 
-Word = []
-Index = 0
+word = []
+index = 0
 
 keywords = []
 
@@ -43,15 +72,15 @@ keywords_Hobbies = []
 keywords_Issues = []
 keywords_Achievements = []
 
-firstpart = ""
-secondpart = ""
-thirdpart = ""
-fourthpart = ""
+firstPart = ""
+secondPart = ""
+thirdPart = ""
+fourthPart = ""
 
 keywordsUsed = []
 
 
-baseline = 0
-Tempnexttopic = ""
-Topic = 0
-Topics = ["Baseline", "Job", "Family", "Love", "Friends", "Hobbies", "Issues", "Achievements"]
+
+tempNextTopic = ""
+topic = 0
+topics = ["Baseline", "Job", "Family", "Love", "Friends", "Hobbies", "Issues", "Achievements"]

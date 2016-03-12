@@ -8,26 +8,26 @@ def nexttopic(level, topic, baseline):
     if level >= baseline:
         chatAI(topic, level, Variables.numberOfChats)
     else:
-        return Variables.topic + 1
+        return Variables.Topic + 1
 
 
 def chatAI(topic, level, numberOfChats):
     numberOfChats = Variables.numberOfChats
-    topic = Variables.topics[Variables.topic]
+    topic = Variables.Topics[Variables.Topic]
     numberOfChats -= 1
     if numberOfChats > 0:
         Variables.Answer = input(FaiAnswer(level))
-        User.analyse(Variables.Answer, Variables.topics[Variables.topic])
+        User.analyse(Variables.Answer, Variables.Topics[Variables.Topic])
 
         #  Will have to enter keyword statements here!!
 
     else:
-        Variables.topic += 1
+        Variables.Topic += 1
     return
 
 
 def FaiAnswer(level):
-    level = Variables.emotion
+    level = Variables.Emotion
     answer = ""
 
     if level < 0 and level > -2:
