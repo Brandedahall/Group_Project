@@ -17,7 +17,7 @@ Save = SaveResponses.read()
 Save = Save.replace("\n", ".")
 Save = Save.split(".")
 
-#Reads the list of names and splits them between spaces
+# Loads the list of names and splits them between spaces
 namesList = open("Names.txt", "r")
 names = namesList.read()
 names = names.replace("            ", " ")
@@ -35,6 +35,18 @@ names = names.replace(" ", " ")
 names = names.replace("\n", " ")
 names = names.lower()
 names = names.split(" ")
+
+# Loads the list of topic questions
+topicList = open("Topic_Questions", "r")
+t = topicList.read()
+t = t.replace("\n", ".")
+t = t.split(".")
+t.reverse()
+# Index used to track the topic questions
+topicIndexJob = 22
+topicIndexFam = 16
+topicIndexLove = 10
+topicIndexFnd = 4
 
 # Username of user
 userName = ""
@@ -57,7 +69,7 @@ baseline = 0
 currentEmotion = 0
 
 FAIanswer = ""
-numberOfChats = 3
+numberOfChats = 0
 
 word = []
 index = 0
@@ -83,4 +95,4 @@ keywordsUsed = []
 
 tempNextTopic = ""
 topic = 0
-topics = ["Baseline", "Job", "Family", "Love", "Friends", "Hobbies", "Issues", "Achievements"]
+topics = ["Job", "Family", "Love", "Friends", "Hobbies", "Issues", "Achievements"]

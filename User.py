@@ -2,11 +2,10 @@ import string
 import Variables
 import AI
 
-# Takes user input and saves thier username
+# Takes user input and saves their username
 def Username(userName):
     # split string into list
     Variables.Name = Variables.userName.split(" ")
-
     if 'I' in Variables.Name:
         Variables.Name.remove('I')
     # If user inout is larger than one word
@@ -35,38 +34,50 @@ def Username(userName):
     return Variables.Name
 
 # analyses users response and updates current emotional level
-def analyse(response, topic):
+def Analyse(response, topic):
     exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
     # breaks down user response and returns emotional level
-    Variables.QuestionAnswer = response
-    Variables.QuestionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in exclude)
-    Variables.QuestionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
-    Variables.QuestionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
+    Variables.questionAnswer = response
+    Variables.questionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in exclude)
+    Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
+    Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
     for x in Variables.questionAnswer:
         if x in Variables.words:
-            Variables.Index = Variables.words.index(x)
-            Variables.emotion += int(Variables.words.pop(Variables.index + 1))
+            Variables.index = Variables.words.index(x)
+            # exception handling allows us to pop a values and then insert it back into the list to be used again
+            try:
+                Variables.emotion += int(Variables.words.pop(Variables.index + 1))
+                Variables.words.insert(Variables.index+1, 0)
+            except ValueError:
+                Variables.emotion += int(Variables.words.pop(Variables.index))
+                Variables.words.insert(Variables.index-1, 0)
         if x not in Variables.words:
             Variables.emotion += 0
     # update current emotional level from user response
     Variables.currentEmotion += Variables.emotion
-
-    Variables.Topic = AI.nexttopic(Variables.emotion, topic, Variables.baseline)
-
-    return Variables.emotion, Variables.topic
+    print(Variables.currentEmotion)
+    Variables.topic = AI.nexttopic(Variables.currentEmotion, topic, Variables.baseline)
+    Variables.emotion = 0
+    return Variables.currentEmotion, Variables.topic
 
 # analyses the baseline response and establishes the baseline emotional level
 def BaseAnalyse(response):
     exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
 
-    Variables.QuestionAnswer = response
-    Variables.QuestionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in exclude)
-    Variables.QuestionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
-    Variables.QuestionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
+    Variables.questionAnswer = response
+    Variables.questionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in exclude)
+    Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
+    Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
     for x in Variables.questionAnswer:
         if x in Variables.words:
-            Variables.Index = Variables.words.index(x)
-            Variables.emotion += int(Variables.words.pop(Variables.index + 1))
+            Variables.index = Variables.words.index(x)
+            # exception handling allows us to pop a values and then insert it back into the list to be used again
+            try:
+                Variables.emotion += int(Variables.words.pop(Variables.index + 1))
+                Variables.words.insert(Variables.index+1, 0)
+            except ValueError:
+                Variables.emotion += int(Variables.words.pop(Variables.index))
+                Variables.words.insert(Variables.index-1, 0)
         if x not in Variables.words:
             Variables.emotion += 0
     # establishes emotional baseline

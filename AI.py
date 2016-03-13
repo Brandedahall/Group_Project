@@ -5,10 +5,14 @@ import math
 
 
 def nexttopic(level, topic, baseline):
-    if level >= baseline:
-        chatAI(topic, level, Variables.numberOfChats)
+    Variables.numberOfChats += 1
+    if level >= baseline and Variables.numberOfChats < 3:
+            return topic
     else:
-        return Variables.topic + 1
+        Variables.numberOfChats = 0
+        topic += 1
+        print("Lets move one to another topic shall we")
+        return topic
 
 
 def chatAI(topic, level, numberOfChats):
