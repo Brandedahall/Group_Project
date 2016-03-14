@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Horrible
 Horrible Response
 Goddamn Horrible
@@ -12,4 +13,20 @@ Good Response
 Goddamn Good
 Brilliant
 Brilliant Response
+=======
+Horrible
+Horrible Response
+Goddamn Horrible
+Bad
+Bad Response
+Goddamn Bad
+Neutral
+Neutral Response
+Goddamn Neutral
+Good
+Good Response
+Goddamn Good
+Brilliant
+Brilliant Response
+>>>>>>> origin/master
 Goddamn Brilliant
