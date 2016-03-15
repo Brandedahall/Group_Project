@@ -1,4 +1,3 @@
-import string
 OperationList = {'come', 'get', 'give', 'go', 'keep', 'let', 'make', 'put', 'seem', 'take', 'be', 'do', 'have', 'say',
                  'about', 'across', 'after', 'against', 'among', 'at', 'before', 'between', 'by', 'down', 'from', 'in',
                  'off', 'on', 'over', 'through', 'to', 'under', 'up', 'with', 'as', 'for', 'of', 'till', 'than,a ', 'the',
