@@ -9,7 +9,7 @@ def Username(userName):
     Variables.Name = Variables.userName.split(" ")
     if 'I' in Variables.Name:
         Variables.Name.remove('I')
-    # If user inout is larger than one word
+    # If user input is larger than one word
     if len(Variables.Name) >= 2:
         # Search through the list of names and appends username
         for word in Variables.Name:
@@ -49,8 +49,6 @@ def Analyse(response, topic):
             Variables.index = Functions.words.index(x)
             # exception handling allows us to pop a values and then insert it back into the list to be used again
             try:
-                #Variables.emotion += int(Variables.words.pop(Variables.index + 1))
-               # Variables.words.insert(Variables.index+1, 0)
                 Variables.instanceEmotion = int(Functions.words.pop(Variables.index + 1))
                 Variables.emotion += Variables.instanceEmotion
                 Functions.words.insert(Variables.index+1, Variables.instanceEmotion)

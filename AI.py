@@ -3,11 +3,14 @@ import User
 import random
 import Functions
 
-
+# determines if the topic needs to be incremented
 def nexttopic(level, topic, baseline):
+    # Increase the number of chats by one
     Variables.numberOfChats += 1
+    # if the emotional level has gone below the baseline or if topic questions below three then return same topic
     if level >= baseline and Variables.numberOfChats < 3:
             return topic
+    # else increase the topic by one and change number of topics to zero as its a new topic
     else:
         Variables.numberOfChats = 0
         topic += 1

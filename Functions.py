@@ -37,7 +37,7 @@ names = names.lower()
 names = names.split(" ")
 
 # Loads the list of topic questions
-topicList = open("Topic_Questions", "r")
+topicList = open("Topic_Questions.txt", "r")
 t = topicList.read()
 t = t.replace("\n", ".")
 t = t.split(".")
