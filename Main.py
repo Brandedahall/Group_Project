@@ -1,5 +1,6 @@
 import Variables
 import User
+import Functions
 # Imports the variables file.
 
 print("Hello! I'm FAI, but please call me Fortune!")
