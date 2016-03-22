@@ -1,47 +1,3 @@
-# Loads responses from text file
-openLines = open("Responses.txt", "r")
-lines = openLines.read()
-lines = lines.replace("\n", ".")
-lines = lines.split(".")
-
-# Loads words used to find emotional level
-wordList = open("AFINN-111.txt", "r")
-words = wordList.read()
-words = words.replace(" ", ".")
-words = words.replace("\t", ".")
-words = words.split(".")
-
-# Loads saved reponses Fai  can use
-SaveResponses = open("SavedResponses.txt", "r")
-Save = SaveResponses.read()
-Save = Save.replace("\n", ".")
-Save = Save.split(".")
-
-# Loads the list of names and splits them between spaces
-namesList = open("Names.txt", "r")
-names = namesList.read()
-names = names.replace("            ", " ")
-names = names.replace("           ", " ")
-names = names.replace("          ", " ")
-names = names.replace("         ", " ")
-names = names.replace("        ", " ")
-names = names.replace("       ", " ")
-names = names.replace("      ", " ")
-names = names.replace("     ", " ")
-names = names.replace("    ", " ")
-names = names.replace("   ", " ")
-names = names.replace("  ", " ")
-names = names.replace(" ", " ")
-names = names.replace("\n", " ")
-names = names.lower()
-names = names.split(" ")
-
-# Loads the list of topic questions
-topicList = open("Topic_Questions", "r")
-t = topicList.read()
-t = t.replace("\n", ".")
-t = t.split(".")
-t.reverse()
 # Index used to track the topic questions
 topicIndexJob = 22
 topicIndexFam = 16
@@ -67,7 +23,8 @@ emotion = 0
 baseline = 0
 # currentEmotion is used to track the emotional level through out the conversation
 currentEmotion = 0
-
+# instance
+instanceEmotion = 0
 FAIanswer = ""
 numberOfChats = 0
 
@@ -90,8 +47,6 @@ thirdPart = ""
 fourthPart = ""
 
 keywordsUsed = []
-
-
 
 tempNextTopic = ""
 topic = 0
