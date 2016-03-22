@@ -1,9 +1,9 @@
-import Functions
+
 # Index used to track the topic questions
-topicIndexJob = len(Functions.t) - 2
-topicIndexFam = len(Functions.t) - 8
-topicIndexLove = len(Functions.t) - 14
-topicIndexFnd = len(Functions.t) - 20
+topicIndexJob = 0
+topicIndexFam = 0
+topicIndexLove = 0
+topicIndexFri = 0
 
 # Username of user
 userName = ""
@@ -31,6 +31,20 @@ numberOfChats = 0
 
 word = []
 index = 0
+
+# List of questions fai asks broken down into separate lists
+# I have used separate lists rather than one list because its easier poping specific topics from separate lists
+questionsJob = ["Do you enjoy your job?", "Do you feel fulfilled with your work?",
+                "Hmm, but what are your future career plans?"]
+questionsFam = ["Are you close with your family?","That is comforting to know, Do you have a fond family memory, My I ask what it is?",
+                "I see, Do you wish you could see your family more?"]
+questionsLove = ["Do you believe you have found your soul mate?",
+"Are you satisfied with amount of affection you get from your loved ones?",
+"Do you feel like you need to surround yourself with more positive energy in your life"]
+questionsFri = ["Do you feel like you have made close bonds with others you can call friends?",
+"Would you say you have always been able to connect with people easily?",
+"It is important to surround yourself with people you have formed bonds with, Can you say that you do?"]
+
 # List of keywords user has used
 userKeywordsJob = []
 userKeywordsFam = []
@@ -50,6 +64,7 @@ countJob = 0
 countFamily = 0
 countLove = 0
 countFriends = 0
+
 firstPart = ""
 secondPart = ""
 thirdPart = ""
@@ -58,7 +73,3 @@ fourthPart = ""
 tempNextTopic = ""
 topic = 0
 topics = ["Job", "Family", "Love", "Friends", "Hobbies", "Issues", "Achievements"]
-
-# counts used to compare string and represent index
-keyCount = 0
-userCount = -1

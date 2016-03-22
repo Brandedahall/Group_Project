@@ -42,3 +42,4 @@ t = topicList.read()
 t = t.replace("\n", ".")
 t = t.split(".")
 t.reverse()
+

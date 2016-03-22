@@ -14,3 +14,5 @@ Variables.questionAnswer = input("Would you say that you have had a good day tod
 print("Baseline level:", User.BaseAnalyse(Variables.questionAnswer))
 
 AI.TopicQuestions(Variables.topic)
+
+AI.GenerateFortune()
