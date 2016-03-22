@@ -1,8 +1,9 @@
+import Functions
 # Index used to track the topic questions
-topicIndexJob = 22
-topicIndexFam = 16
-topicIndexLove = 10
-topicIndexFnd = 4
+topicIndexJob = len(Functions.t) - 2
+topicIndexFam = len(Functions.t) - 8
+topicIndexLove = len(Functions.t) - 14
+topicIndexFnd = len(Functions.t) - 20
 
 # Username of user
 userName = ""
@@ -30,24 +31,34 @@ numberOfChats = 0
 
 word = []
 index = 0
-
-keywords = []
-
-keywords_Job = []
-keywords_Family = []
-keywords_Love = []
-keywords_Friends = []
-keywords_Hobbies = []
-keywords_Issues = []
-keywords_Achievements = []
-
+# List of keywords user has used
+userKeywordsJob = []
+userKeywordsFam = []
+userKeywordsLove = []
+userKeywordsFri = []
+# Fais saved keywords
+keywordsJob = ["teacher", "tv presenter", "unemployed", "student"]
+keywordsFamily = ["mom", "dad", "brother", "sister"]
+keywordsLove = ["wife", "husband", "girlfriend", "boyfriend"]
+keywordsFriends = ["best friend", "close", "friend", "friends"]
+keywordsHobbies = []
+keywordsIssues = []
+keywordsAchievements = []
+# counts used to keep track with the number of keywords in users response. Once used to change
+# the conversation the counts are assigned negative numbers to asure they do not trigger again
+countJob = 0
+countFamily = 0
+countLove = 0
+countFriends = 0
 firstPart = ""
 secondPart = ""
 thirdPart = ""
 fourthPart = ""
 
-keywordsUsed = []
-
 tempNextTopic = ""
 topic = 0
 topics = ["Job", "Family", "Love", "Friends", "Hobbies", "Issues", "Achievements"]
+
+# counts used to compare string and represent index
+keyCount = 0
+userCount = -1

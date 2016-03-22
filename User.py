@@ -62,7 +62,7 @@ def Analyse(response, topic):
     # update current emotional level from user response
     Variables.currentEmotion += Variables.emotion
     print(Variables.currentEmotion)
-    Variables.topic = AI.nexttopic(Variables.currentEmotion, topic, Variables.baseline)
+    Variables.topic = AI.NextTopic(Variables.currentEmotion, topic, Variables.baseline)
     Variables.emotion = 0
     return Variables.currentEmotion, Variables.topic
 
@@ -81,11 +81,14 @@ def BaseAnalyse(response):
             Variables.index = Functions.words.index(x)
             # exception handling allows us to pop a values and then insert it back into the list to be used again
             try:
-                Variables.emotion += int(Functions.words.pop(Variables.index + 1))
-                Functions.words.insert(Variables.index+1, 0)
+                Variables.instanceEmotion = int(Functions.words.pop(Variables.index + 1))
+                Variables.emotion += Variables.instanceEmotion
+                Functions.words.insert(Variables.index+1, Variables.instanceEmotion)
             except ValueError:
-                Variables.emotion += int(Functions.words.pop(Variables.index))
-                Functions.words.insert(Variables.index-1, 0)
+
+                Variables.instanceEmotion = int(Functions.words.pop(Variables.index))
+                Variables.emotion += Variables.instanceEmotion
+                Functions.words.insert(Variables.index-1, Variables.instanceEmotion)
         if x not in Functions.words:
             Variables.emotion += 0
     # establishes emotional baseline
