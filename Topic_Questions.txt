@@ -1,12 +1,12 @@
-Job.Do you enjoy your job?
-Job.Do you feel fulfilled with your work?
-Job.Hmm, but what are your future career plans?
-Family.Are you close with your family?
-Family.That is comforting to know, Do you have a fond family memory, My I ask what it is?
-Family.I see, Do you wish you could see your family more?
-Love.Do you believe you have found your soul mate?
-Love.Are you satisfied with amount of affection you get from your loved ones?
-Love.Do you feel like you need to surround yourself with more positive energy in your life
-Friends.Do you feel like you have made close bonds with others you can call friends?
-Friends.Would you say you have always been able to connect with people easily?
-Friends.It is important to surround yourself with people you have formed bonds with, Can you say that you do?
+Job.Tell me, what is it that you do for a living?
+Job.Break down your emotions and feelings about your job into one word for me.
+Job.Interesting, but what are your future career plans?
+Family.Who do you feel the most connected to within your family? Who understands you the most?
+Family.It seems there was a significant family event that was meaningful to you. A recent holiday or family gathering?
+Family.I see, do you wish you could see your family more?
+Love.Do you believe you have found your soul mate? A boyfriend or girlfriend perhaps?
+Love.Which month did you meet your other half? There is great significance behind the joining of yourself and your partner
+Love.Do you feel like you need to surround yourself with more positive energy in your life?
+Friends.I can sense you have made a powerful bond with someone who is not of the same blood. Tell me the name of your closest friend.
+Friends.How many years have you known this person?
+Friends.It is important to surround yourself with people you have formed bonds with, can you say that you do?

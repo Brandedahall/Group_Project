@@ -13,6 +13,15 @@ def NextTopic(level, topic, baseline):
         topic = 1
         Variables.countFamily = -100
         Variables.numberOfChats = 0
+        # because the topic is changing we store the emotional level of the current topic
+        if topic == 0:
+            Variables.emotionJob = Variables.currentEmotion
+        elif topic == 1:
+            Variables.emotionFamily = Variables.currentEmotion
+        elif topic == 2:
+            Variables.emotionLove = Variables.currentEmotion
+        elif topic == 3:
+            Variables.emotionFriend = Variables.currentEmotion
         # current emotion has o be reset to prevent one negative response ruining the entire conversation
         Variables.currentEmotion = Variables.baseline
         return topic
@@ -21,6 +30,15 @@ def NextTopic(level, topic, baseline):
         topic = 2
         Variables.countLove = -100
         Variables.numberOfChats = 0
+         # because the topic is changing we store the emotional level of the current topic
+        if topic == 0:
+            Variables.emotionJob = Variables.currentEmotion
+        elif topic == 1:
+            Variables.emotionFamily = Variables.currentEmotion
+        elif topic == 2:
+            Variables.emotionLove = Variables.currentEmotion
+        elif topic == 3:
+            Variables.emotionFriend = Variables.currentEmotion
         # current emotion has o be reset to prevent one negative response ruining the entire conversation
         Variables.currentEmotion = Variables.baseline
         return topic
@@ -29,6 +47,15 @@ def NextTopic(level, topic, baseline):
         topic = 3
         Variables.countFriends = -100
         Variables.numberOfChats = 0
+         # because the topic is changing we store the emotional level of the current topic
+        if topic == 0:
+            Variables.emotionJob = Variables.currentEmotion
+        elif topic == 1:
+            Variables.emotionFamily = Variables.currentEmotion
+        elif topic == 2:
+            Variables.emotionLove = Variables.currentEmotion
+        elif topic == 3:
+            Variables.emotionFriend = Variables.currentEmotion
         # current emotion has to be reset to prevent one negative response ruining the entire conversation
         Variables.currentEmotion = Variables.baseline
         return topic
@@ -40,6 +67,15 @@ def NextTopic(level, topic, baseline):
             return topic
     # else increase the topic by one and change number of topics to zero as its a new topic
     else:
+         # because the topic is changing we store the emotional level of the current topic
+        if topic == 0:
+            Variables.emotionJob = Variables.currentEmotion
+        elif topic == 1:
+            Variables.emotionFamily = Variables.currentEmotion
+        elif topic == 2:
+            Variables.emotionLove = Variables.currentEmotion
+        elif topic == 3:
+            Variables.emotionFriend = Variables.currentEmotion
         # current emotion has o be reset to prevent one negative response ruining the entire conversation
         Variables.currentEmotion = Variables.baseline
         Variables.numberOfChats = 0
@@ -58,26 +94,32 @@ def TopicQuestions(topic):
             Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
             Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
             # checks users statement for key words regarding this topic and appends them to a user list
+            # this is used to check if a user has mentioned a topic so Fai can change the level of conversation
             for x in Variables.keywordsJob:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsJob.append(y)
                         Variables.countJob += 1
             for x in Variables.keywordsFamily:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsFam.append(y)
                         Variables.countFamily += 1
             for x in Variables.keywordsLove:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsLove.append(y)
                         Variables.countLove += 1
             for x in Variables.keywordsFriends:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsFri.append(y)
                         Variables.countFriends += 1
+            # these loops are used to check for keywords that can be used in the end fortune
+            for x in Variables.keywordsJobQ1:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsJobQ1.append(y)
+            for x in Variables.keywordsJobQ2:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsJobQ2.append(y)
             User.Analyse(Variables.questionAnswer, Variables.topic)
         # calls this function again with same / updated topic
         TopicQuestions(Variables.topic)
@@ -93,23 +135,28 @@ def TopicQuestions(topic):
             for x in Variables.keywordsJob:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsJob.append(y)
                         Variables.countJob += 1
             for x in Variables.keywordsFamily:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsFam.append(y)
                         Variables.countFamily += 1
             for x in Variables.keywordsLove:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsLove.append(y)
                         Variables.countLove += 1
             for x in Variables.keywordsFriends:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsFri.append(y)
                         Variables.countFriends += 1
+            # these loops are used to check for keywords that can be used in the end fortune
+            for x in Variables.keywordsFamilyQ1:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsFamQ1.append(y)
+            for x in Variables.keywordsFamilyQ2:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsFamQ2.append(y)
             User.Analyse(Variables.questionAnswer, Variables.topic)
         TopicQuestions(Variables.topic)
     if topic == 2:
@@ -123,23 +170,28 @@ def TopicQuestions(topic):
             for x in Variables.keywordsJob:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsJob.append(y)
                         Variables.countJob += 1
             for x in Variables.keywordsFamily:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsFam.append(y)
                         Variables.countFamily += 1
             for x in Variables.keywordsLove:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsLove.append(y)
                         Variables.countLove += 1
             for x in Variables.keywordsFriends:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsFri.append(y)
                         Variables.countFriends += 1
+            # these loops are used to check for keywords that can be used in the end fortune
+            for x in Variables.keywordsLoveQ1:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsLoveQ1.append(y)
+            for x in Variables.keywordsLoveQ2:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsLoveQ2.append(y)
             User.Analyse(Variables.questionAnswer, Variables.topic)
         TopicQuestions(Variables.topic)
     if topic == 3:
@@ -153,23 +205,28 @@ def TopicQuestions(topic):
             for x in Variables.keywordsJob:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsJob.append(y)
                         Variables.countJob += 1
             for x in Variables.keywordsFamily:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsFam.append(y)
                         Variables.countFamily += 1
             for x in Variables.keywordsLove:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsLove.append(y)
                         Variables.countLove += 1
             for x in Variables.keywordsFriends:
                 for y in Variables.questionAnswer:
                     if y == x:
-                        Variables.userKeywordsFri.append(y)
                         Variables.countFriends += 1
+            # these loops are used to check for keywords that can be used in the end fortune
+            for x in Variables.keywordsFriendsQ1:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsFriQ1.append(y)
+            for x in Variables.userKeywordsFriQ2:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsFriQ2.append(y)
             User.Analyse(Variables.questionAnswer, Variables.topic)
         TopicQuestions(Variables.topic)
     if topic >= 4:
@@ -227,80 +284,79 @@ def MissedTopics():
         User.Analyse(Variables.questionAnswer, Variables.topic)
 
 def GenerateFortune():
-    for x in Variables.userKeywordsJob:
-        print (x)
-    for x in Variables.userKeywordsFam:
-        print (x)
-    for x in Variables.userKeywordsLove:
-        print (x)
-    for x in Variables.userKeywordsFri:
-        print (x)
-
-def chatAI(topic, level, numberOfChats):
-    numberOfChats = Variables.numberOfChats
-    topic = Variables.topics[Variables.topic]
-    numberOfChats -= 1
-    if numberOfChats > 0:
-        Variables.Answer = input(FaiAnswer(level))
-        User.Analyse(Variables.Answer, Variables.topics[Variables.topic])
-
-        #  Will have to enter keyword statements here!!
-
-    else:
-        Variables.topic += 1
-    return
-
-
-def FaiAnswer(level):
-    level = Variables.emotion
-    answer = ""
-
-    if level < 0 and level > -2:
-        answer = Functions.lines[random.randrange(1, 3)]
-    if level < -2 and level > -5:
-        answer = Functions.lines[random.randrange(4, 6)]
-    if level == 0:
-        answer = Functions.lines[random.randrange(7, 9)]
-    if level > 0 and level < 2:
-        answer = Functions.lines[random.randrange(10, 12)]
-    if level > 2 and level < 5:
-        answer = Functions.lines[random.randrange(13, 15)]
-
-    return answer
-
-
-def load():
-    Bestmatch = 0
-    answerSSD = 0
-    SSD = 0
-    ID = 0
-
-    for char in Variables.Answer:
-        answerSSD *= ord(char)
-
-    for line in Functions.SaveResponses:
-        if line.isupper():
-            ID += 1
-            continue
-        if line.strip('-').isdigit():
-            ID += 1
-            continue
+    if Variables.emotionJob > Variables.emotionFamily and Variables.emotionJob > Variables.emotionLove and \
+            Variables.emotionJob > Variables.emotionFriend:
+        # if statement used to see if user has used any of the keyword for their fortune
+        # if they have not then they will be given an generic keyword
+        if len(Variables.userKeywordsJobQ1) > 1:
+            Variables.q1 = Variables.userKeywordsJobQ1[1]
         else:
-            ID += 1
-            for char in line:
-                SSD *= ord(char)
-
-            if SSD > SSD:
-                Bestmatch = SSD
-                Variables.FAIanswer = line
-                continue
-            if SSD < Bestmatch:
-                continue
-            if SSD > answerSSD:
-                continue
-    return Variables.FAIanswer
-
-
-def save(level, answer, useranswer):
-    Functions.Save.append(useranswer, "\n", answer, "\n", level, "\n")
-    return
+            q1 = Variables.userKeywordsJobQ1[0]
+        if len(Variables.userKeywordsJobQ2) > 1:
+            q2 = Variables.userKeywordsJobQ2[1]
+        else:
+            Variables.q2 = Variables.userKeywordsJobQ2[0]
+        print(User.Username(Variables.userName),
+              ", From the answers you have given, and the aura I sense from I can foresee, "
+              "that there is going to be  great success within your role as a", q1, ". I am channeling with the "
+              "mother of the earth to see further. Hmmm, you might feel ", q2,
+              "now but the earth’s spirits "
+              "within me are pulsating ... They reveal to me that there is still much of a journey down the path"
+              " you have chosen for your career. If you work hard others will see your dedication and you will be "
+              "duly rewarded for this in good time.")
+    if Variables.emotionFamily > Variables.emotionJob and Variables.emotionFamily and Variables.emotionLove and\
+            Variables.emotionFamily > Variables.emotionFriend:
+        # if statement used to see if user has used any of the keyword for their fortune
+        # if they have not then they will be given an generic keyword
+        if len(Variables.userKeywordsFamQ1) > 1:
+            q1 = Variables.userKeywordsFamQ1[1]
+        else:
+            q1 = Variables.userKeywordsFamQ1[0]
+        if len(Variables.userKeywordsFamQ2) > 1:
+            q2 = Variables.userKeywordsFamQ2[1]
+        else:
+            q2 = Variables.userKeywordsFamQ2[0]
+        print(User.Username(Variables.userName),", From the answers you have given, and the aura I sense from I can foresee,"
+              " I can tell that there"
+              " is a deep connection between yourself and your", q1, ". I can see that the time spent with your "
+              "family during ", q2, " has brought you closer together with your family. If you continue to commune "
+              "with each other this way I sense great things for you and your loved ones. The strength you have as a "
+              "family will only grow stronger")
+    if Variables.emotionLove and Variables.emotionJob & Variables.emotionLove and Variables.emotionFamily and \
+            Variables.emotionLove > Variables.emotionFriend:
+        # if statement used to see if user has used any of the keyword for their fortune
+        # if they have not then they will be given an generic keyword
+        if len(Variables.userKeywordsLoveQ1) > 1:
+            q1 = Variables.userKeywordsLoveQ1[1]
+        else:
+            q1 = Variables.userKeywordsLoveQ1[0]
+        if len(Variables.userKeywordsLoveQ2) > 1:
+            q2 = Variables.userKeywordsLoveQ2[1]
+        else:
+            q2 = Variables.userKeywordsLoveQ2[0]
+        print(User.Username(Variables.userName), ", From the answers you have given, and the aura I sense from "
+              "I can foresee"
+              " that your heart and"
+              " soul is intertwined with another and the relationship with your ", q1, " is powerful and the"
+              " passion you share for one another is like no other i have ever come across in this world. The month of"
+              , q2," i feel is strong for you and is where most of your power as two souls comes from, hold"
+              " onto this power and keep it close to you as this will clear obstacles for you in the future and will"
+              " only bring you greater happiness.")
+    if Variables.emotionFriend and Variables.emotionJob and Variables.emotionFriend and Variables.emotionFamily and\
+            Variables.emotionFriend > Variables.emotionLove:
+        # if statement used to see if user has used any of the keyword for their fortune
+        # if they have not then they will be given an generic keyword
+        if len(Variables.userKeywordsFriQ1) > 1:
+            q1 = Variables.userKeywordsFriQ1[1]
+        else:
+            q1 = Variables.userKeywordsFriQ1[0]
+        if len(Variables.userKeywordsFriQ2) > 1:
+            q2 = Variables.userKeywordsFriQ2[1]
+        else:
+            q2 = Variables.userKeywordsFriQ2[0]
+        print(User.Username(Variables.userName), ", From the answers you have given, and the aura I sense from I can foresee"
+              " a strong powerful"
+              "bond between yourself and someone who you may not be of the same blood, but you share the same mind "
+              "and spirit with ", q1, ".  The relationship between you and <FriendName> is strong, and has "
+              "lastesd ", q2, " years, this will continue to be reflected within the friendship and holds a "
+              "true value for you")

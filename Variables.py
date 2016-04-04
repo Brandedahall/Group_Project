@@ -1,3 +1,4 @@
+import Functions
 
 # Index used to track the topic questions
 topicIndexJob = 0
@@ -34,30 +35,48 @@ index = 0
 
 # List of questions fai asks broken down into separate lists
 # I have used separate lists rather than one list because its easier poping specific topics from separate lists
-questionsJob = ["Do you enjoy your job?", "Do you feel fulfilled with your work?",
-                "Hmm, but what are your future career plans?"]
-questionsFam = ["Are you close with your family?","That is comforting to know, Do you have a fond family memory, My I ask what it is?",
+questionsJob = ["Tell me, what is it that you do for a living?",
+                "Break down your emotions and feelings about your job into one word for me.",
+                "Interesting, but what are your future career plans?"]
+questionsFam = ["Who do you feel the most connected to within your family? Who understands you the most?",
+                "It seems there was a significant family event that was meaningful to you. A recent holiday or family gathering?",
                 "I see, Do you wish you could see your family more?"]
-questionsLove = ["Do you believe you have found your soul mate?",
-"Are you satisfied with amount of affection you get from your loved ones?",
+questionsLove = ["Do you believe you have found your soul mate? A boyfriend or girlfriend perhaps?",
+"Which month did you meet your other half? There is great significance behind the joining of yourself and your partner",
 "Do you feel like you need to surround yourself with more positive energy in your life"]
 questionsFri = ["Do you feel like you have made close bonds with others you can call friends?",
 "Would you say you have always been able to connect with people easily?",
 "It is important to surround yourself with people you have formed bonds with, Can you say that you do?"]
 
-# List of keywords user has used
-userKeywordsJob = []
-userKeywordsFam = []
-userKeywordsLove = []
-userKeywordsFri = []
+# List of keywords user has used broken down for the first two questions of each topic
+userKeywordsJobQ1 = ["career"]
+userKeywordsJobQ2 = ["okay"]
+userKeywordsFamQ1 = ["family"]
+userKeywordsFamQ2 = ["family event"]
+userKeywordsLoveQ1 = ["loved one"]
+userKeywordsLoveQ2 = ["time"]
+userKeywordsFriQ1 = ["your friend"]
+userKeywordsFriQ2 = [""]
 # Fais saved keywords
+keywordsJobQ1 = ["teacher", "presenter", "unemployed", "student"]
+keywordsJobQ2 = Functions.words
+keywordsFamilyQ1 = ["mom", "mum", "dad", "brother", "sister"]
+keywordsFamilyQ2 = ["holiday", "party", "birthday", "christmas", "easter"]
+keywordsLoveQ1 = ["wife", "husband", "girlfriend", "boyfriend"]
+keywordsLoveQ2 = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+keywordsFriendsQ1 = Functions.names
+keywordsFriendsQ2 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                     "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+                     "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+                     "31", "32", "33", "34", "35", "36", "37", "38", "39", "40",
+                     "41", "42", "43", "44", "45", "46", "47", "48", "49", "50",
+                     "51", "52", "53", "54", "55", "56", "57", "58", "59", "60",
+                     "61", "62", "63", "64", "65", "66", "67", "68", "69", "70"]
+# These words are used to change the topic if the user mentions them
 keywordsJob = ["teacher", "tv presenter", "unemployed", "student"]
 keywordsFamily = ["mom", "dad", "brother", "sister"]
 keywordsLove = ["wife", "husband", "girlfriend", "boyfriend"]
 keywordsFriends = ["best friend", "close", "friend", "friends"]
-keywordsHobbies = []
-keywordsIssues = []
-keywordsAchievements = []
 # counts used to keep track with the number of keywords in users response. Once used to change
 # the conversation the counts are assigned negative numbers to asure they do not trigger again
 countJob = 0
@@ -65,11 +84,12 @@ countFamily = 0
 countLove = 0
 countFriends = 0
 
-firstPart = ""
-secondPart = ""
-thirdPart = ""
-fourthPart = ""
-
-tempNextTopic = ""
+# value used to represent the current topic
 topic = 0
-topics = ["Job", "Family", "Love", "Friends", "Hobbies", "Issues", "Achievements"]
+
+# values used to store the value of the emotional value of each topic
+emotionJob = 0
+emotionFamily = 0
+emotionLove = 0
+emotionFriend = 0
+
