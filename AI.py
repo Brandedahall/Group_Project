@@ -1,18 +1,20 @@
 import Variables
 import User
-import random
-import Functions
+import string
 
 # determines if the topic needs to be incremented
 def NextTopic(level, topic, baseline):
     # if the user has said keywords for a particular topic then Fai will change the conversation to that topic
     # an if statement for job is not needed as its the first topic Fai will talk about
     # however it is still important we record the job keywords is we need them when generating the fortune
-    if Variables.countFamily >= 1:
+    if Variables.countFamily >= 1 and Variables.currentEmotion >= Variables.baseline and len(Variables.questionsFam) == 3:
         print("I sense that your family is very important to your fate, Let us explore this more")
+        if topic == 1:
+            Variables.numberOfChats += 1
+        else:
+            Variables.numberOfChats = 0
         topic = 1
         Variables.countFamily = -100
-        Variables.numberOfChats = 0
         # because the topic is changing we store the emotional level of the current topic
         if topic == 0:
             Variables.emotionJob = Variables.currentEmotion
@@ -25,11 +27,14 @@ def NextTopic(level, topic, baseline):
         # current emotion has o be reset to prevent one negative response ruining the entire conversation
         Variables.currentEmotion = Variables.baseline
         return topic
-    elif Variables.countLove >= 1:
+    elif Variables.countLove >= 1 and Variables.currentEmotion >= Variables.baseline and len(Variables.questionsLove) == 3:
         print("I can feel that love has great impact on your life, Lets explore this")
+        if topic == 2:
+            Variables.numberOfChats += 1
+        else:
+            Variables.numberOfChats = 0
         topic = 2
         Variables.countLove = -100
-        Variables.numberOfChats = 0
          # because the topic is changing we store the emotional level of the current topic
         if topic == 0:
             Variables.emotionJob = Variables.currentEmotion
@@ -42,11 +47,15 @@ def NextTopic(level, topic, baseline):
         # current emotion has o be reset to prevent one negative response ruining the entire conversation
         Variables.currentEmotion = Variables.baseline
         return topic
-    elif Variables.countFriends >= 1:
+    elif Variables.countFriends >= 1 and Variables.currentEmotion >= Variables.baseline and len(Variables.questionsFri) == 3:
         print("I can see clearly that friendship means a great deal to you, Let me ask you some questions about this")
+        if topic == 3:
+            Variables.numberOfChats += 1
+        else:
+            Variables.numberOfChats = 0
         topic = 3
         Variables.countFriends = -100
-        Variables.numberOfChats = 0
+
          # because the topic is changing we store the emotional level of the current topic
         if topic == 0:
             Variables.emotionJob = Variables.currentEmotion
@@ -85,12 +94,23 @@ def NextTopic(level, topic, baseline):
 
 # recursive function that cycles through the topic questions while also appneding key words user has used
 def TopicQuestions(topic):
+
+
     if topic == 0:
         if len(Variables.questionsJob) == 0:
             topic += 1
         else:
             # break user response into a list of words so the keywords can be appended and counts can be incremented
-            Variables.questionAnswer = input(Variables.questionsJob.pop(Variables.topicIndexJob))
+            errorAppend = Variables.questionsJob.pop(Variables.topicIndexJob)
+            Variables.questionAnswer = input(errorAppend)
+            # error detection
+            if (len(Variables.questionAnswer) == 0):
+                Variables.questionsJob.insert(0, errorAppend)
+                print("Your going to have to answer my question to hear your fortune! So, I will ask again")
+                Variables.questionAnswer = "filler"
+                TopicQuestions(topic)
+            # removes punctuation
+            Variables.questionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in Variables.exclude)
             Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
             Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
             # checks users statement for key words regarding this topic and appends them to a user list
@@ -128,7 +148,17 @@ def TopicQuestions(topic):
         if len(Variables.questionsFam) == 0:
             topic += 1
         else:
-            Variables.questionAnswer = input(Variables.questionsFam.pop(Variables.topicIndexFam))
+            # break user response into a list of words so the keywords can be appended and counts can be incremented
+            errorAppend = Variables.questionsFam.pop(Variables.topicIndexJob)
+            Variables.questionAnswer = input(errorAppend)
+            # error detection
+            if (len(Variables.questionAnswer) == 0):
+                Variables.questionsFam.insert(0, errorAppend)
+                print("Your going to have to answer my question to hear your fortune! So, I will ask again")
+                Variables.questionAnswer = "filler"
+                TopicQuestions(topic)
+            # removes punctuation
+            Variables.questionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in Variables.exclude)
             Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
             Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
             # checks users statement for key words regarding this topic and appends them to a user list
@@ -163,7 +193,17 @@ def TopicQuestions(topic):
         if len(Variables.questionsLove) == 0:
             topic += 1
         else:
-            Variables.questionAnswer = input(Variables.questionsLove.pop(Variables.topicIndexLove))
+            # break user response into a list of words so the keywords can be appended and counts can be incremented
+            errorAppend = Variables.questionsLove.pop(Variables.topicIndexJob)
+            Variables.questionAnswer = input(errorAppend)
+            # error detection
+            if (len(Variables.questionAnswer) == 0):
+                Variables.questionsLove.insert(0, errorAppend)
+                print("Your going to have to answer my question to hear your fortune! So, I will ask again")
+                Variables.questionAnswer = "filler"
+                TopicQuestions(topic)
+            # removes punctuation
+            Variables.questionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in Variables.exclude)
             Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
             Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
             # checks users statement for key words regarding this topic and appends them to a user list
@@ -198,7 +238,17 @@ def TopicQuestions(topic):
         if len(Variables.questionsFri) == 0:
             topic += 1
         else:
-            Variables.questionAnswer = input(Variables.questionsFri.pop(Variables.topicIndexFri))
+            # break user response into a list of words so the keywords can be appended and counts can be incremented
+            errorAppend = Variables.questionsFri.pop(Variables.topicIndexJob)
+            Variables.questionAnswer = input(errorAppend)
+            # error detection
+            if (len(Variables.questionAnswer) == 0):
+                Variables.questionsFri.insert(0, errorAppend)
+                print("Your going to have to answer my question to hear your fortune! So, I will ask again")
+                Variables.questionAnswer = "filler"
+                TopicQuestions(topic)
+            # removes punctuation
+            Variables.questionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in Variables.exclude)
             Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
             Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
             # checks users statement for key words regarding this topic and appends them to a user list
@@ -223,7 +273,7 @@ def TopicQuestions(topic):
                 for y in Variables.questionAnswer:
                     if y == x:
                         Variables.userKeywordsFriQ1.append(y)
-            for x in Variables.userKeywordsFriQ2:
+            for x in Variables.keywordsFriendsQ2:
                 for y in Variables.questionAnswer:
                     if y == x:
                         Variables.userKeywordsFriQ2.append(y)
@@ -289,13 +339,13 @@ def GenerateFortune():
         # if statement used to see if user has used any of the keyword for their fortune
         # if they have not then they will be given an generic keyword
         if len(Variables.userKeywordsJobQ1) > 1:
-            Variables.q1 = Variables.userKeywordsJobQ1[1]
+            q1 = Variables.userKeywordsJobQ1[1]
         else:
             q1 = Variables.userKeywordsJobQ1[0]
         if len(Variables.userKeywordsJobQ2) > 1:
             q2 = Variables.userKeywordsJobQ2[1]
         else:
-            Variables.q2 = Variables.userKeywordsJobQ2[0]
+            q2 = Variables.userKeywordsJobQ2[0]
         print(User.Username(Variables.userName),
               ", From the answers you have given, and the aura I sense from I can foresee, "
               "that there is going to be  great success within your role as a", q1, ". I am channeling with the "
@@ -357,6 +407,6 @@ def GenerateFortune():
         print(User.Username(Variables.userName), ", From the answers you have given, and the aura I sense from I can foresee"
               " a strong powerful"
               "bond between yourself and someone who you may not be of the same blood, but you share the same mind "
-              "and spirit with ", q1, ".  The relationship between you and <FriendName> is strong, and has "
+              "and spirit with ", q1, ".  The relationship between you and", q1," is strong, and has "
               "lastesd ", q2, " years, this will continue to be reflected within the friendship and holds a "
               "true value for you")

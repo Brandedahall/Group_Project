@@ -38,12 +38,12 @@ def Username(userName):
 
 
 def Analyse(response, topic):
-    exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
+    # exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
     # breaks down user response and returns emotional level
-    Variables.questionAnswer = response
-    Variables.questionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in exclude)
-    Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
-    Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
+    # Variables.questionAnswer = response
+    # Variables.questionAnswer = ''.join(ch for ch in Variables.questionAnswer if ch not in exclude)
+    # Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
+    # Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
     for x in Variables.questionAnswer:
         if x in Functions.words:
             Variables.index = Functions.words.index(x)

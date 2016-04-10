@@ -1,4 +1,5 @@
 import Functions
+import string
 
 # Index used to track the topic questions
 topicIndexJob = 0
@@ -44,8 +45,8 @@ questionsFam = ["Who do you feel the most connected to within your family? Who u
 questionsLove = ["Do you believe you have found your soul mate? A boyfriend or girlfriend perhaps?",
 "Which month did you meet your other half? There is great significance behind the joining of yourself and your partner",
 "Do you feel like you need to surround yourself with more positive energy in your life"]
-questionsFri = ["Do you feel like you have made close bonds with others you can call friends?",
-"Would you say you have always been able to connect with people easily?",
+questionsFri = ["I can sense you have made a powerful bond with someone who is not of the same blood. Tell me the name of your closest friend.",
+"How many years have you known this person?",
 "It is important to surround yourself with people you have formed bonds with, Can you say that you do?"]
 
 # List of keywords user has used broken down for the first two questions of each topic
@@ -60,7 +61,7 @@ userKeywordsFriQ2 = [""]
 # Fais saved keywords
 keywordsJobQ1 = ["teacher", "presenter", "unemployed", "student"]
 keywordsJobQ2 = Functions.words
-keywordsFamilyQ1 = ["mom", "mum", "dad", "brother", "sister"]
+keywordsFamilyQ1 = ["mom", "mum", "dad", "brother", "sister", "dad", "father", "mother", "daddy", "mommy"]
 keywordsFamilyQ2 = ["holiday", "party", "birthday", "christmas", "easter"]
 keywordsLoveQ1 = ["wife", "husband", "girlfriend", "boyfriend"]
 keywordsLoveQ2 = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
@@ -76,7 +77,7 @@ keywordsFriendsQ2 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 keywordsJob = ["teacher", "tv presenter", "unemployed", "student"]
 keywordsFamily = ["mom", "dad", "brother", "sister"]
 keywordsLove = ["wife", "husband", "girlfriend", "boyfriend"]
-keywordsFriends = ["best friend", "close", "friend", "friends"]
+keywordsFriends = ["friend", "friends"]
 # counts used to keep track with the number of keywords in users response. Once used to change
 # the conversation the counts are assigned negative numbers to asure they do not trigger again
 countJob = 0
@@ -93,3 +94,4 @@ emotionFamily = 0
 emotionLove = 0
 emotionFriend = 0
 
+exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
