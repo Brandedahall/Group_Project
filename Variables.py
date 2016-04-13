@@ -3,7 +3,7 @@ import string
 import random
 
 topicRND = random.randint(2, 4)
-fortuneRND = random.randint(8, 10)
+fortuneRND = random.randint(10, 15)
 # Index used to track the topic questions
 topicIndexJob = 0
 topicIndexFam = 0
