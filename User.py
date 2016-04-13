@@ -61,7 +61,7 @@ def Analyse(response, topic):
             Variables.emotion += 0
     # update current emotional level from user response
     Variables.currentEmotion += Variables.emotion
-    print(Variables.currentEmotion)
+    # print(Variables.currentEmotion)
     Variables.topic = AI.NextTopic(Variables.currentEmotion, topic, Variables.baseline)
     Variables.emotion = 0
     return Variables.currentEmotion, Variables.topic

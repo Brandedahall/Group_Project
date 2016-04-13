@@ -1,6 +1,7 @@
 import Variables
 import User
 import AI
+import time
 # Imports the variables file.
 
 print("Hello! I'm FAI, but please call me Fortune!")
@@ -8,6 +9,7 @@ print("Hello! I'm FAI, but please call me Fortune!")
 
 # Takes user response and saves username
 Variables.userName = input("Alright! To start us off, please can you tell me your name?")
+time.sleep(Variables.topicRND)
 print("It's nice to meet you, " + User.Username(Variables.userName))
 # Collect baseline emotional level
 Variables.questionAnswer = input("Would you say that you have had a good day today?")
@@ -17,7 +19,7 @@ if len(Variables.questionAnswer) < 1:
     User.BaseAnalyse('Neutral')
     Variables.questionAnswer = "Neutral"
 else:
-    print("Baseline level:", User.BaseAnalyse(Variables.questionAnswer))
+    User.BaseAnalyse(Variables.questionAnswer)
 
 AI.TopicQuestions(Variables.topic)
 

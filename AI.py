@@ -1,6 +1,7 @@
 import Variables
 import User
-import string
+import time
+
 
 # determines if the topic needs to be incremented
 def NextTopic(level, topic, baseline):
@@ -8,6 +9,7 @@ def NextTopic(level, topic, baseline):
     # an if statement for job is not needed as its the first topic Fai will talk about
     # however it is still important we record the job keywords is we need them when generating the fortune
     if Variables.countFamily >= 1 and Variables.currentEmotion >= Variables.baseline and len(Variables.questionsFam) == 3:
+        time.sleep(Variables.topicRND)
         print("I sense that your family is very important to your fate, Let us explore this more")
         if topic == 1:
             Variables.numberOfChats += 1
@@ -28,6 +30,7 @@ def NextTopic(level, topic, baseline):
         Variables.currentEmotion = Variables.baseline
         return topic
     elif Variables.countLove >= 1 and Variables.currentEmotion >= Variables.baseline and len(Variables.questionsLove) == 3:
+        time.sleep(Variables.topicRND)
         print("I can feel that love has great impact on your life, Lets explore this")
         if topic == 2:
             Variables.numberOfChats += 1
@@ -48,6 +51,7 @@ def NextTopic(level, topic, baseline):
         Variables.currentEmotion = Variables.baseline
         return topic
     elif Variables.countFriends >= 1 and Variables.currentEmotion >= Variables.baseline and len(Variables.questionsFri) == 3:
+        time.sleep(Variables.topicRND)
         print("I can see clearly that friendship means a great deal to you, Let me ask you some questions about this")
         if topic == 3:
             Variables.numberOfChats += 1
@@ -89,13 +93,13 @@ def NextTopic(level, topic, baseline):
         Variables.currentEmotion = Variables.baseline
         Variables.numberOfChats = 0
         topic += 1
-        print("Lets move one to another topic shall we")
+        print(Variables.movingOn.pop())
         return topic
 
 # recursive function that cycles through the topic questions while also appneding key words user has used
 def TopicQuestions(topic):
 
-
+    time.sleep(Variables.topicRND)
     if topic == 0:
         if len(Variables.questionsJob) == 0:
             topic += 1
@@ -106,7 +110,7 @@ def TopicQuestions(topic):
             # error detection
             if (len(Variables.questionAnswer) == 0):
                 Variables.questionsJob.insert(0, errorAppend)
-                print("Your going to have to answer my question to hear your fortune! So, I will ask again")
+                print("You're going to have to answer my question to hear your fortune! So, I will ask again")
                 Variables.questionAnswer = "filler"
                 TopicQuestions(topic)
             # removes punctuation
@@ -154,7 +158,7 @@ def TopicQuestions(topic):
             # error detection
             if (len(Variables.questionAnswer) == 0):
                 Variables.questionsFam.insert(0, errorAppend)
-                print("Your going to have to answer my question to hear your fortune! So, I will ask again")
+                print("You're going to have to answer my question to hear your fortune! So, I will ask again")
                 Variables.questionAnswer = "filler"
                 TopicQuestions(topic)
             # removes punctuation
@@ -199,7 +203,7 @@ def TopicQuestions(topic):
             # error detection
             if (len(Variables.questionAnswer) == 0):
                 Variables.questionsLove.insert(0, errorAppend)
-                print("Your going to have to answer my question to hear your fortune! So, I will ask again")
+                print("You're going to have to answer my question to hear your fortune! So, I will ask again")
                 Variables.questionAnswer = "filler"
                 TopicQuestions(topic)
             # removes punctuation
@@ -244,7 +248,7 @@ def TopicQuestions(topic):
             # error detection
             if (len(Variables.questionAnswer) == 0):
                 Variables.questionsFri.insert(0, errorAppend)
-                print("Your going to have to answer my question to hear your fortune! So, I will ask again")
+                print("You're going to have to answer my question to hear your fortune! So, I will ask again")
                 Variables.questionAnswer = "filler"
                 TopicQuestions(topic)
             # removes punctuation
@@ -284,6 +288,7 @@ def TopicQuestions(topic):
 # goes through any topic that hasnt been used as a result of keywords changing the conversation
 # during this function fai can only collect keywords. She cannot  change topic depending on the key words
 def MissedTopics():
+    time.sleep(Variables.topicRND)
     if len(Variables.questionsFam) == 3:
        while(len(Variables.questionsFam) > 0):
         Variables.questionAnswer = input(Variables.questionsFam.pop(Variables.topicIndexFam))
@@ -334,8 +339,9 @@ def MissedTopics():
         User.Analyse(Variables.questionAnswer, Variables.topic)
 
 def GenerateFortune():
-    if Variables.emotionJob > Variables.emotionFamily and Variables.emotionJob > Variables.emotionLove and \
-            Variables.emotionJob > Variables.emotionFriend:
+    time.sleep(Variables.fortuneRND)
+    if Variables.emotionJob >= Variables.emotionFamily and Variables.emotionJob >= Variables.emotionLove and \
+            Variables.emotionJob >= Variables.emotionFriend:
         # if statement used to see if user has used any of the keyword for their fortune
         # if they have not then they will be given an generic keyword
         if len(Variables.userKeywordsJobQ1) > 1:
@@ -347,14 +353,14 @@ def GenerateFortune():
         else:
             q2 = Variables.userKeywordsJobQ2[0]
         print(User.Username(Variables.userName),
-              ", From the answers you have given, and the aura I sense from I can foresee, "
-              "that there is going to be  great success within your role as a", q1, ". I am channeling with the "
+              ", from the answers you have given, and the aura I sense from you. I can foresee, "
+              "that there is going to be great success within your role as a", q1, ". I am channeling with the "
               "mother of the earth to see further. Hmmm, you might feel ", q2,
               "now but the earth’s spirits "
               "within me are pulsating ... They reveal to me that there is still much of a journey down the path"
               " you have chosen for your career. If you work hard others will see your dedication and you will be "
               "duly rewarded for this in good time.")
-    if Variables.emotionFamily > Variables.emotionJob and Variables.emotionFamily and Variables.emotionLove and\
+    if Variables.emotionFamily > Variables.emotionJob and Variables.emotionFamily > Variables.emotionLove and\
             Variables.emotionFamily > Variables.emotionFriend:
         # if statement used to see if user has used any of the keyword for their fortune
         # if they have not then they will be given an generic keyword
@@ -366,13 +372,13 @@ def GenerateFortune():
             q2 = Variables.userKeywordsFamQ2[1]
         else:
             q2 = Variables.userKeywordsFamQ2[0]
-        print(User.Username(Variables.userName),", From the answers you have given, and the aura I sense from I can foresee,"
+        print(User.Username(Variables.userName),", from the answers you have given, and the aura I sense from you."
               " I can tell that there"
               " is a deep connection between yourself and your", q1, ". I can see that the time spent with your "
-              "family during ", q2, " has brought you closer together with your family. If you continue to commune "
+              "family during the ", q2, " has brought you closer together with your family. If you continue to commune "
               "with each other this way I sense great things for you and your loved ones. The strength you have as a "
               "family will only grow stronger")
-    if Variables.emotionLove and Variables.emotionJob & Variables.emotionLove and Variables.emotionFamily and \
+    if Variables.emotionLove > Variables.emotionJob and Variables.emotionLove > Variables.emotionFamily and \
             Variables.emotionLove > Variables.emotionFriend:
         # if statement used to see if user has used any of the keyword for their fortune
         # if they have not then they will be given an generic keyword
@@ -384,15 +390,15 @@ def GenerateFortune():
             q2 = Variables.userKeywordsLoveQ2[1]
         else:
             q2 = Variables.userKeywordsLoveQ2[0]
-        print(User.Username(Variables.userName), ", From the answers you have given, and the aura I sense from "
+        print(User.Username(Variables.userName), ", From the answers you have given, and the aura I sense from you."
               "I can foresee"
               " that your heart and"
-              " soul is intertwined with another and the relationship with your ", q1, " is powerful and the"
+              " soul is intertwined with another and the relationship between you and your ", q1, " is powerful and the"
               " passion you share for one another is like no other i have ever come across in this world. The month of"
-              , q2," i feel is strong for you and is where most of your power as two souls comes from, hold"
+              , q2," is strong for you and is where most of your power as two souls comes from, hold"
               " onto this power and keep it close to you as this will clear obstacles for you in the future and will"
               " only bring you greater happiness.")
-    if Variables.emotionFriend and Variables.emotionJob and Variables.emotionFriend and Variables.emotionFamily and\
+    if Variables.emotionFriend > Variables.emotionJob and Variables.emotionFriend > Variables.emotionFamily and\
             Variables.emotionFriend > Variables.emotionLove:
         # if statement used to see if user has used any of the keyword for their fortune
         # if they have not then they will be given an generic keyword
@@ -404,9 +410,10 @@ def GenerateFortune():
             q2 = Variables.userKeywordsFriQ2[1]
         else:
             q2 = Variables.userKeywordsFriQ2[0]
-        print(User.Username(Variables.userName), ", From the answers you have given, and the aura I sense from I can foresee"
+        print(User.Username(Variables.userName), ", From the answers you have given, and the aura I sense from I can "
+              "foresee"
               " a strong powerful"
               "bond between yourself and someone who you may not be of the same blood, but you share the same mind "
               "and spirit with ", q1, ".  The relationship between you and", q1," is strong, and has "
-              "lastesd ", q2, " years, this will continue to be reflected within the friendship and holds a "
+              "lastesd ", q2, " years, this will continue to be reflected within the friendship you two share and holds"
               "true value for you")

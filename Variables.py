@@ -1,6 +1,9 @@
 import Functions
 import string
+import random
 
+topicRND = random.randint(2, 4)
+fortuneRND = random.randint(8, 10)
 # Index used to track the topic questions
 topicIndexJob = 0
 topicIndexFam = 0
@@ -50,7 +53,7 @@ questionsFri = ["I can sense you have made a powerful bond with someone who is n
 "It is important to surround yourself with people you have formed bonds with, Can you say that you do?"]
 
 # List of keywords user has used broken down for the first two questions of each topic
-userKeywordsJobQ1 = ["career"]
+userKeywordsJobQ1 = ["individual"]
 userKeywordsJobQ2 = ["okay"]
 userKeywordsFamQ1 = ["family"]
 userKeywordsFamQ2 = ["family event"]
@@ -95,3 +98,7 @@ emotionLove = 0
 emotionFriend = 0
 
 exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
+
+movingOn = [" ", " ", " ", "Lets move on to another topic shall we.",
+            "Hmm I sense your future clouding. We shall discuss something else.",
+            "I can see that this subject is not linked to your fate as I originally thought. We shall move on."]

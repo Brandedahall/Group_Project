@@ -680,7 +680,7 @@
  ridiculous	-3
  rig	-1
  rigged	-1
- right direction	3
+ right 3
  rigorous	3
  rigorously	3
  riot	-2
