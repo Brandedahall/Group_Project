@@ -3,7 +3,7 @@ import string
 import random
 
 topicRND = random.randint(2, 4)
-fortuneRND = random.randint(10, 15)
+fortuneRND = random.randint(8, 10)
 # Index used to track the topic questions
 topicIndexJob = 0
 topicIndexFam = 0
@@ -99,6 +99,7 @@ emotionFriend = 0
 
 exclude = set(string.punctuation)  # This strips all punctuation from the user's reply.
 
-movingOn = [" ", " ", " ", "Lets move on to another topic shall we.",
+movingOn = [" ", " ", "Okay, I am gathering my thoughts, I can feel your fortune becoming clearer.",
             "Hmm I sense your future clouding. We shall discuss something else.",
-            "I can see that this subject is not linked to your fate as I originally thought. We shall move on."]
+            "We shall move on. To another topic",
+            "Lets move on to another topic shall we."]

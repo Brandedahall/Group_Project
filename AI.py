@@ -93,6 +93,7 @@ def NextTopic(level, topic, baseline):
         Variables.currentEmotion = Variables.baseline
         Variables.numberOfChats = 0
         topic += 1
+        time.sleep(Variables.topicRND)
         print(Variables.movingOn.pop())
         return topic
 
@@ -295,23 +296,14 @@ def MissedTopics():
         Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
         Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
         # checks users statement for key words regarding this topic and appends them to a user list
-        for x in Variables.keywordsJob:
-            for y in Variables.questionAnswer:
-                if y == x:
-                    Variables.userKeywordsJob.append(y)
-        for x in Variables.keywordsFamily:
-            for y in Variables.questionAnswer:
-                if y == x:
-                    Variables.userKeywordsFam.append(y)
-        for x in Variables.keywordsLove:
-            for y in Variables.questionAnswer:
-                if y == x:
-                    Variables.userKeywordsLove.append(y)
-        for x in Variables.keywordsFriends:
-            for y in Variables.questionAnswer:
-                if y == x:
-                    Variables.userKeywordsFri.append(y)
-                    Variables.countFriends += 1
+        for x in Variables.keywordsFamilyQ1:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsFamQ1.append(y)
+        for x in Variables.keywordsFamilyQ2:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsFamQ2.append(y)
         User.Analyse(Variables.questionAnswer, Variables.topic)
     if len(Variables.questionsLove) == 3:
        while(len(Variables.questionsLove) > 0):
@@ -319,23 +311,15 @@ def MissedTopics():
         Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
         Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
         # checks users statement for key words regarding this topic and appends them to a user list
-        for x in Variables.keywordsJob:
-            for y in Variables.questionAnswer:
-                if y == x:
-                    Variables.userKeywordsJob.append(y)
-        for x in Variables.keywordsFamily:
-            for y in Variables.questionAnswer:
-                if y == x:
-                    Variables.userKeywordsFam.append(y)
-        for x in Variables.keywordsLove:
-            for y in Variables.questionAnswer:
-                if y == x:
-                    Variables.userKeywordsLove.append(y)
-        for x in Variables.keywordsFriends:
-            for y in Variables.questionAnswer:
-                if y == x:
-                    Variables.userKeywordsFri.append(y)
-                    Variables.countFriends += 1
+        for x in Variables.keywordsLoveQ1:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsLoveQ1.append(y)
+        for x in Variables.keywordsLoveQ2:
+                for y in Variables.questionAnswer:
+                    if y == x:
+                        Variables.userKeywordsLoveQ2.append(y)
+
         User.Analyse(Variables.questionAnswer, Variables.topic)
 
 def GenerateFortune():

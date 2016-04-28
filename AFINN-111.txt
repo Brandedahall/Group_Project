@@ -370,8 +370,6 @@
  nonsense	-2
  noob	-2
  nosey	-2
- not good	-2
- not working	-3
  notorious	-2
  novel	2
  numb	-1
