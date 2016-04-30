@@ -556,7 +556,7 @@
  protesters	-2
  protesting	-2
  protests	-2
- proud	2
+ proud	5
  proudly	2
  provoke	-1
  provoked	-1

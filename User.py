@@ -46,6 +46,8 @@ def Analyse(response, topic):
     # Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
     for x in Variables.questionAnswer:
         if x in Functions.words:
+            if x == "":
+                break
             Variables.index = Functions.words.index(x)
             # exception handling allows us to pop a values and then insert it back into the list to be used again
             try:

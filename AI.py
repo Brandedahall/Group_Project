@@ -289,9 +289,9 @@ def TopicQuestions(topic):
 # goes through any topic that hasnt been used as a result of keywords changing the conversation
 # during this function fai can only collect keywords. She cannot  change topic depending on the key words
 def MissedTopics():
-    time.sleep(Variables.topicRND)
     if len(Variables.questionsFam) == 3:
        while(len(Variables.questionsFam) > 0):
+        time.sleep(Variables.topicRND)
         Variables.questionAnswer = input(Variables.questionsFam.pop(Variables.topicIndexFam))
         Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
         Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
@@ -307,6 +307,7 @@ def MissedTopics():
         User.Analyse(Variables.questionAnswer, Variables.topic)
     if len(Variables.questionsLove) == 3:
        while(len(Variables.questionsLove) > 0):
+        time.sleep(Variables.topicRND)
         Variables.questionAnswer = input(Variables.questionsLove.pop(Variables.topicIndexLove))
         Variables.questionAnswer = Variables.questionAnswer.lower()  # This turns all uppercase characters into lower.
         Variables.questionAnswer = Variables.questionAnswer.split(" ")  # This splits the string into a list of words.
@@ -339,7 +340,7 @@ def GenerateFortune():
         print(User.Username(Variables.userName),
               ", from the answers you have given, and the aura I sense from you. I can foresee, "
               "that there is going to be great success within your role as a", q1, ". I am channeling with the "
-              "mother of the earth to see further. Hmmm, you might feel ", q2,
+              "mother of the earth to see further. Hmmm, you might feel", q2,
               "now but the earth’s spirits "
               "within me are pulsating ... They reveal to me that there is still much of a journey down the path"
               " you have chosen for your career. If you work hard others will see your dedication and you will be "
@@ -359,7 +360,7 @@ def GenerateFortune():
         print(User.Username(Variables.userName),", from the answers you have given, and the aura I sense from you."
               " I can tell that there"
               " is a deep connection between yourself and your", q1, ". I can see that the time spent with your "
-              "family during the ", q2, " has brought you closer together with your family. If you continue to commune "
+              "family during the", q2, "has brought you closer together with your family. If you continue to commune "
               "with each other this way I sense great things for you and your loved ones. The strength you have as a "
               "family will only grow stronger")
     if Variables.emotionLove > Variables.emotionJob and Variables.emotionLove > Variables.emotionFamily and \
@@ -377,7 +378,7 @@ def GenerateFortune():
         print(User.Username(Variables.userName), ", From the answers you have given, and the aura I sense from you."
               "I can foresee"
               " that your heart and"
-              " soul is intertwined with another and the relationship between you and your ", q1, " is powerful and the"
+              " soul is intertwined with another and the relationship between you and your", q1, "is powerful and the"
               " passion you share for one another is like no other i have ever come across in this world. The month of"
               , q2," is strong for you and is where most of your power as two souls comes from, hold"
               " onto this power and keep it close to you as this will clear obstacles for you in the future and will"
@@ -398,6 +399,6 @@ def GenerateFortune():
               "foresee"
               " a strong powerful"
               "bond between yourself and someone who you may not be of the same blood, but you share the same mind "
-              "and spirit with ", q1, ".  The relationship between you and", q1," is strong, and has "
-              "lastesd ", q2, " years, this will continue to be reflected within the friendship you two share and holds"
+              "and spirit with", q1, ".  The relationship between you and", q1," is strong, and has "
+              "lasted", q2, "years, this will continue to be reflected within the friendship you two share and holds"
               "true value for you")
